@@ -57,7 +57,7 @@ const server = new ApolloServer({
 });
 ```
 
-## 2 Scalar and Root type
+## 2. Scalar and Root type
 
 if server is succefully running
 
@@ -135,7 +135,7 @@ tweet(id: ID): Tweet
 
 use `[]` : allTweets: [Tweet]
 
-## 3 mutation type
+## 3. mutation type
 
 `type Mutation`
 this is for post, put, delete in rest API action
@@ -162,3 +162,15 @@ we can give `non-nullable property` by write `!` behind of the fileds
 this is the way to tell api
 
 what is necessary and not
+
+## 5. recap
+
+if i define mutation queries in `type Query`
+
+it doesn't matter. there is no error at all.
+
+but the meaning of use `type Mutation` is telling
+
+exact type of queries
+
+## 6.
