@@ -146,3 +146,19 @@ type Mutation {
 	deleteTweet(id: ID): Boolean
 }
 ```
+
+### ! give meaningless data
+
+`!` gives non-null junk data to user
+
+`Tweet!`
+
+## 4. Non nullable Fields
+
+every fields can be null basically
+
+we can give `non-nullable property` by write `!` behind of the fileds
+
+this is the way to tell api
+
+what is necessary and not
