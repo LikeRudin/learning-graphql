@@ -56,3 +56,81 @@ const server = new ApolloServer({
   csrfPrevention: true,
 });
 ```
+
+## 2 Scalar and Root type
+
+if server is succefully running
+
+then click the `url` on console and `query your server`
+
+to open page to test query
+
+test query
+
+```s
+query Query{
+  text
+  hello
+}
+```
+
+<br>
+
+response
+
+```s
+{
+  "data": {
+    "text": null,
+    "hello": null
+  }
+}
+```
+
+### two works for using graph ql
+
+1.  explain shape of data - define data type
+
+2.  make code to create an actual data
+
+<br>
+
+- scalar type
+
+        built-in data type in apollo-server
+
+        String, Int, Boolean ID
+
+- non-scalar type
+
+        : custom type
+
+- root type
+
+### example query types
+
+```s
+type User {
+    id: ID
+    username: String
+    }
+
+type Tweet {
+    id: ID
+    text: String
+    author: String
+    }
+
+type Query {
+allTweets: [Tweet]
+tweet(id: ID): Tweet
+}
+```
+
+### parameter
+
+`Get /tweet/:id` is same with `tweet(id: ID)`
+
+### list of data
+
+use `[]` : allTweets: [Tweet]
