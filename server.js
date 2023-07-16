@@ -2,6 +2,11 @@ import {ApolloServer, gql} from "apollo-server";
 
 
 const typeDefs = gql`
+    type Mutation {
+	    postTweet(text: String, userId: ID): Tweet
+	    deleteTweet(id: ID): Boolean
+    }
+    
     type User {
         id: ID
         username: String

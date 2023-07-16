@@ -134,3 +134,15 @@ tweet(id: ID): Tweet
 ### list of data
 
 use `[]` : allTweets: [Tweet]
+
+## 3 mutation type
+
+`type Mutation`
+this is for post, put, delete in rest API action
+
+```s
+type Mutation {
+	postTweet(text: String, userId: ID): Tweet
+	deleteTweet(id: ID): Boolean
+}
+```
