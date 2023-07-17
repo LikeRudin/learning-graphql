@@ -173,4 +173,100 @@ but the meaning of use `type Mutation` is telling
 
 exact type of queries
 
-## 6.
+## 6,7 8. Query, Mutation, Type Resolvers
+
+resolver is a function to return actual data
+
+it access to db and return data
+
+Resolver functions are passed four arguments:
+
+parent, args, contextValue, and info (in that order).
+
+- parent: root or source
+
+doc: https://www.apollographql.com/docs/apollo-server/data/resolvers/#resolver-arguments
+
+### handling non-defined schema error
+
+`Error: Query.allUsers defined in resolvers, but not in schema`
+
+resolver's query and mutation must have pre-defined schema in `typeDefs`
+
+```js
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  csrfPrevention: true,
+});
+```
+
+### querying undefined property
+
+queried undefine property
+
+query
+
+```s
+query($tweetId: ID!) {
+  tweet(id: $tweetId) {
+    author // no author in tweet array.
+  }
+}
+```
+
+variable
+
+```s
+{
+  "tweetId": "1"
+}
+```
+
+tweets array: no author property
+
+```js
+let tweets = [
+  {
+    id: "1",
+    text: "first one!",
+  },
+  {
+    id: "2",
+    text: "second one",
+  },
+];
+```
+
+Error message
+
+```
+errors": [
+    {
+      "message": "Cannot return null for non-nullable field Tweet.author.",
+      "locations": [
+        {
+          "line": 3,
+          "column": 5
+        }
+      ],
+      "path": [
+        "tweet",
+        "author"
+      ],
+      "extensions": {
+        "code": "INTERNAL_SERVER_ERROR",
+        "exception": {
+          "stacktrace": [
+            "Error: Cannot return null for non-nullable field Tweet.author."
+```
+
+define author or submit pre-defined property like `text`
+
+```
+query {
+  tweet(id: "1") {
+    text
+  }
+}
+```
