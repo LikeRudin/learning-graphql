@@ -270,3 +270,11 @@ query {
   }
 }
 ```
+
+## 10 documentation
+
+use """ """ to insert comment in javascript code
+
+we can see the DOCs in graphql page
+
+in this project: `http://localhost:4000/`
